@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Front Yard Site Model</title>
+<style>
+  :root{
+    --bg:#f6f4ee; --panel:#ffffff; --ink:#22261f; --muted:#646b5e; --line:#d9d6cc;
+    --street:#b9b9b4; --walk:#e4e1d8; --conc:#d5d2c8; --house:#8c8a84; --lot:#4a4a44;
+    --turf:#cfe0b4; --bee:#e9e3a6; --prairie:#e7b866; --shade:#8fb59a; --fdn:#c9a77a;
+    --blvd:#e9e3a6; --water:#7fb6d6; --tree:#2f6b3a; --p1:#d9822b; --p2:#3f8f6b; --p3:#7d5ba6;
+    --accent:#b5522b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 "Source Sans 3",system-ui,-apple-system,Segoe UI,sans-serif}
+  header{padding:20px 24px 8px;max-width:1280px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 4px;font-weight:700;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:14px;margin:0}
+  .wrap{max-width:1280px;margin:0 auto;padding:8px 24px 32px;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px}
+  @media (max-width:900px){.wrap{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px}
+  .mapcard{padding:10px}
+  .bar{display:flex;flex-wrap:wrap;gap:6px;padding:4px 4px 10px;align-items:center}
+  .bar .lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-right:4px}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .seg button{border:0;background:#fff;padding:6px 12px;font:inherit;font-size:14px;cursor:pointer;color:var(--ink)}
+  .seg button+button{border-left:1px solid var(--line)}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  label.tog{font-size:14px;display:inline-flex;gap:6px;align-items:center;margin-left:10px;cursor:pointer}
+  svg{width:100%;height:auto;display:block;background:#fbfaf6;border-radius:6px}
+  .zone{cursor:pointer;transition:opacity .15s}
+  .zone:hover{filter:brightness(0.95)}
+  .zone.sel{stroke:var(--ink);stroke-width:.45}
+  .side{padding:16px 18px}
+  .side h2{font-size:17px;margin:0 0 6px}
+  .side .meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+  .chip{font-size:12px;padding:2px 8px;border-radius:999px;background:#efece3;color:var(--ink)}
+  .side p{margin:0 0 8px}
+  .side ul{margin:0 0 8px;padding-left:18px}
+  .legend{padding:14px 18px;margin-top:14px}
+  .legend h3{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 8px}
+  .legend div{display:flex;align-items:center;gap:8px;font-size:14px;margin:3px 0}
+  .sw{width:16px;height:12px;border-radius:3px;border:1px solid rgba(0,0,0,.15);flex:none}
+  .note{font-size:13px;color:var(--muted);margin-top:10px}
+  .warn{color:var(--accent);font-weight:600}
+</style>
+</head>
+<body>
+<header>
+  <h1>Front yard site model</h1>
+  <p class="sub">Lot ≈ 68 × 114 ft (~7,700 sq ft) · drawn to scale in "plan north" (street on the left). Click any area for details.</p>
+</header>
+<div class="wrap">
+  <div class="card mapcard">
+    <div class="bar">
+      <span class="lbl">View</span>
+      <div class="seg" role="group" aria-label="View">
+        <button data-view="existing" aria-pressed="false">Existing</button>
+        <button data-view="plan" aria-pressed="true">Plan v1</button>
+        <button data-view="phases" aria-pressed="false">Phases</button>
+      </div>
+      <label class="tog"><input type="checkbox" id="tTrees" checked> Tree canopies</label>
+      <label class="tog"><input type="checkbox" id="tDims" checked> Dimensions</label>
+      <label class="tog"><input type="checkbox" id="tBlvdB"> Boulevard Option B</label>
+    </div>
+    <svg id="map" viewBox="-26 -10 146 88" role="img" aria-label="To-scale site plan of the front yard"></svg>
+    <p class="note">Scaled from an aerial photo and calibrated to the recorded lot area, so expect ±2–3 ft. Mapped parcel lines are often offset from the imagery by a few feet. <span class="warn">"?"</span> marks guesses to verify on the ground.</p>
+  </div>
+  <div>
+    <div class="card side" id="panel"></div>
+    <div class="card legend" id="legend"></div>
+  </div>
+</div>
+<script>
+(() => {
+  const NS = "http://www.w3.org/2000/svg";
+  const svg = document.getElementById("map");
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const el = (tag, attrs = {}, parent = svg) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; };
+  const pts = a => a.map(p => p.join(",")).join(" ");
+
+  // ---------- geometry, lot frame in feet: x east from front property line, y south from north line ----------
+  const G = {
+    lot: [[0,0],[114,0],[114,67.8],[0,67.8]],
+    house: [[20.2,3.5],[48.0,3.0],[48.1,9.9],[74.6,9.8],[74.6,50.1],[46.6,51.1],[44.8,38.4],[20.8,39.1]],
+    drive: [[0.6,3.7],[20.2,3.5],[20.4,24.5],[-0.2,27.5]],
+    apron: [[-15,1],[0.6,3.7],[-0.2,27.5],[-15,30]],
+    walk: [[15.1,25.1],[20.4,24.4],[20.6,35.3],[16.5,36.0]],
+    deck: [[74.6,29.7],[83.0,29.6],[83.8,49.1],[74.6,50.1]],
+    fdn: [[10.3,25.8],[15.1,25.1],[16.9,38.6],[12.7,38.8]],
+    cornerExisting: [[33.2,38.7],[44.8,38.4],[46.6,51.1],[39.2,51.3],[34.9,46.5]],
+    ac: [[57.3,52.8],[66.1,52.3],[66.3,54.9],[57.5,55.6]],
+    // proposed
+    stumpIsland: [[1,27.3],[10.3,25.8],[16.9,38.6],[13,40.5],[6,41.5],[1,36.5]],
+    cornerBed: [[20.8,39.1],[44.8,38.4],[46.6,51.1],[36,51.3],[28,50.6],[22.5,47.5]],
+    shadeN: [[33,51.3],[46.6,51.1],[57.3,50.8],[57.3,56],[33,56]],
+    shadeS: [[33,59],[69.3,59],[69.4,67.8],[33,67.8]],
+    path: [[33,56],[69.2,56],[69.3,59],[33,59]],
+    border: [[1.5,59.5],[33,59],[33,65.4],[9,65.4],[7.4,67.6],[1.5,67.6]],
+    z1: [[-3,27.5],[-0.2,27.5],[10.3,25.8],[12.7,38.8],[16.9,38.6],[20.8,39.1],[33,38.8],[33,67.8],[-3,67.8]],
+    blvd: [[-15,30],[-8,30],[-8,67.8],[-15,67.8]],
+    blvdB: [[-13.5,34],[-9.5,34],[-9.5,67.8],[-13.5,67.8]],
+  };
+  const trees = [
+    {id:"T2", c:[-11.5,34], r:12, own:"City boulevard tree", note:"Fine-textured leaves in Street View (possibly an elm or hackberry). Its canopy shades the north half of the boulevard and the lawn by the drive."},
+    {id:"T3", c:[-11.5,71.5], r:9, own:"Neighbor's boulevard tree", note:"Compound leaves in Street View (honeylocust or Kentucky coffeetree look). It overhangs the lot's southwest corner."},
+    {id:"T4", c:[48,60], r:8, own:"On this lot", note:"A ~20 ft tree in front of the south end of the house, near the backyard fence. It anchors the shade bed."},
+    {id:"T5", c:[56,75], r:15, own:"Neighbor's (behind the privacy fence)", note:"A tall tree on the far side of the fence. It shades the south strip from the south."},
+  ];
+
+  const INFO = {
+    z1: {t:"Open front lawn (already mostly bee lawn)", a:"~790 sq ft", light:"Sun to part sun", ph:"Touch-ups · late winter 2027, then ongoing", body:"<p>The lawn is already clover-rich. The gap is early spring, before the clover gets going.</p><ul><li>Frost-seed white clover and self-heal into thin spots in late Feb–Mar: scatter on frozen ground and let freeze-thaw work it in</li><li>Add early bloomers that tolerate mowing: native violets, wild strawberry; crocus bulbs (non-native, well-behaved) planted this fall</li><li>Mow at 3–4 in., 2–4 times a year, and hold off on the first mow until the early bloomers finish</li><li>No fertilizer or broadleaf herbicide: both knock back clover</li></ul>"},
+    corner: {t:"Corner prairie bed (Z2)", a:"~300 sq ft (≈135 existing + 165 new)", light:"Part sun to sun, afternoon", ph:"Phase 1 · smother fall 2026, plant May 2027", body:"<p>Grows the existing inside-corner bed out along the south side of the front wing. A short-to-mid prairie mix, 1–3 ft:</p><ul><li>Prairie dropseed, little bluestem</li><li>Anise hyssop, wild bergamot, purple coneflower</li><li>Rough blazing star, aromatic aster</li></ul><p>~150 plugs at 15–18 in. spacing.</p>"},
+    fdn: {t:"Foundation bed + stump island (Z3)", a:"~160 sq ft (60 existing + ~100 new)", light:"Sun to part sun, afternoon", ph:"Phase 1 · smother fall 2026, plant May 2027", body:"<p>With T1 gone, this corner gets afternoon sun. Widen the foundation bed west to wrap the stump in low sun natives: wild strawberry, pussytoes, nodding onion, harebell, little bluestem. Keep healthy shrubs, and swap tired ones for bush honeysuckle (<i>Diervilla lonicera</i>) or New Jersey tea.</p><p class='warn'>Existing bed contents and exact stump spot unknown: verify.</p>"},
+    stump: {t:"T1 stump", a:"low, staying in place", light:"Full afternoon sun", ph:"Phase 1 feature", body:"<p>Pick one:</p><ul><li><b>Bee bath:</b> a shallow saucer with pebbles on top, kept topped up</li><li><b>Rot it faster:</b> drill 1 in. holes, pack with compost or clippings, bury under the Phase 1 mulch</li></ul><p>Either way it becomes habitat: rotting wood feeds beetles and fungi that wood-nesting bees later use. Clip any root suckers. Top up the soil with free topsoil as it settles.</p>"},
+    shade: {t:"Shade bed under T4 (Z4)", a:"~430 sq ft planted + 3 ft path", light:"Shade to part shade", ph:"Phase 2 · smother Jun, plant Sep 2027", body:"<p>The spot where turf struggles most becomes a woodland-edge planting:</p><ul><li>Pennsylvania sedge as the groundcover</li><li>Wild geranium, zigzag goldenrod, big-leaved aster, wild ginger</li><li>2–3 native shrubs</li></ul><p>A 3 ft mulch path runs along the house to the backyard fence. Remove the old beehive first.</p>"},
+    path: {t:"Mulch access path", a:"~110 sq ft", light:"—", ph:"Phase 2", body:"<p>3 ft wide, shredded mulch over cardboard. Runs along the house to the backyard fence, through the spot where the old beehive sits now. Gate location to verify.</p>"},
+    border: {t:"South border bed", a:"~190 sq ft", light:"Part sun (6 ft fence to the south)", ph:"Phase 3 · smother Jun 2027, plant May 2028", body:"<p>A border along the neighbor's privacy fence, linking the corner beds to the sidewalk. Leave a 2 ft mown or mulched strip at the fence so they can maintain it. The fence shades it from the south, especially in spring and fall, so favor part-sun species: wild bergamot, golden alexanders, zigzag goldenrod, prairie dropseed. Seed it instead of using plugs to save ~$200, at the cost of slower fill-in.</p>"},
+    blvd: {t:"Boulevard (city right-of-way)", a:"~265 sq ft south of the drive", light:"Part shade north half (T2), part sun south", ph:"Option A: Phase 2 bee lawn · Option B: Phase 3 natives", body:"<p><b>Option A, bee lawn:</b> extend the front lawn's bee lawn to the boulevard; it's still mown turf. Very likely no permit needed, but confirm with Forestry that the clover and thyme count as turf.</p><p><b>Option B, native strip:</b> needs the free Natural Landscape Permit. Keep all plants 18 in. from the curb and sidewalk, which leaves a ~4 ft core. Plan on staying under ~24 in., lowest by the driveway apron.</p><ul><li>Don't prune T2 or T3: only licensed companies may, with a permit</li><li>Call 811 before digging</li><li>Expect plow snow and salt</li></ul>"},
+    blvdB: {t:"Boulevard Option B core", a:"~150 sq ft", light:"Part sun", ph:"Phase 3 · permit winter 2027–28", body:"<p>The plantable core after 18 in. setbacks from the curb and the sidewalk. Short, salt-tolerant natives. A city permit is required, and no hardscape until Forestry approves it.</p>"},
+    rain: {t:"Rain barrel + overflow pocket", a:"~30 sq ft dip", light:"Sun", ph:"Phase 1 · spring 2027 (optional)", body:"<p>A barrel at the front downspout by the wing's SW corner (location to verify). Overflow runs ≥10 ft from the foundation to a shallow dip planted with swamp milkweed, blue vervain, great blue lobelia and fox sedge.</p><p>The city's barrel cost-share is limited to a pilot area. A Rochester Garden Grant can cover runoff-diversion materials.</p>"},
+    hive: {t:"Old beehive (dead colony)", a:"~25 sq ft footprint", light:"Shade", ph:"Remove before Phase 2", body:"<p>If it's a managed honey bee hive, have a local beekeeper check it before moving it. Old comb can carry American foulbrood spores, which robber bees from other hives carry home. Close the entrance until then, then remove the hive or hand the equipment over. Its spot becomes part of the shade bed and path.</p>"},
+    house: {t:"House", a:"~2,090 sq ft roof footprint", light:"", ph:"Out of scope", body:"<p>Split-entry. The garage faces the street at the north end, and the front door sits just south of it, up a short stoop. The lawn slopes gently down from the house to the sidewalk.</p>"},
+    drive: {t:"Driveway", a:"~19 × 23 ft on the lot", light:"", ph:"No change", body:"<p>Keep boulevard plantings low near the apron so you can see when backing out.</p>"},
+    north: {t:"North side strip", a:"~3 ft wide (mapped line may be off)", light:"Shade (north of house)", ph:"Leave as is for now", body:"<p>A narrow strip between the house and the north line. The parcel line looks too close to the house, which suggests a mapping offset. Measure before planning anything here.</p>"},
+    back: {t:"Backyard", a:"", light:"", ph:"Out of scope", body:"<p>Behind the backyard fence. Not part of this plan.</p>"},
+  };
+  trees.forEach(t => INFO[t.id] = {t:`Tree ${t.id}`, a:`canopy ≈ ${Math.round(t.r*2)} ft (est.)`, light:"", ph:t.own, body:`<p>${t.note}</p><p>Species are guesses from photos. Avoid tilling or sod-cutting inside the drip line; smother and hand-plant instead.</p>`});
+
+  // ---------- drawing ----------
+  let view = "plan", sel = null;
+  const Z = {};
+  function zone(id, poly, fill, opts = {}) {
+    const p = el("polygon", {points: pts(poly), fill, stroke: opts.stroke || "rgba(0,0,0,.25)", "stroke-width": opts.sw || .15, class: "zone", "data-z": id, ...(opts.dash ? {"stroke-dasharray": opts.dash} : {}), ...(opts.op != null ? {"fill-opacity": opts.op} : {})});
+    p.addEventListener("click", e => { e.stopPropagation(); show(id); });
+    (Z[id] = Z[id] || []).push(p);
+    return p;
+  }
+  function text(x, y, s, o = {}) { const t = el("text", {x, y, "font-size": (o.fs || 1.9) * 1.35, "text-anchor": o.anchor || "middle", fill: o.fill || css("--ink"), "font-weight": o.w || 400, "pointer-events": "none", ...(o.rot ? {transform:`rotate(${o.rot} ${x} ${y})`} : {})}); t.textContent = s; return t; }
+
+  function draw() {
+    svg.innerHTML = "";
+    const phases = view === "phases", plan = view !== "existing";
+    const PH = {1: css("--p1"), 2: css("--p2"), 3: css("--p3")};
+    // street, boulevard, sidewalk, ROW strip
+    el("rect", {x:-26, y:-10, width:11, height:88, fill: css("--street")});
+    text(-20.5, 54, "street", {fs:2.2, rot:-90, fill:"#fff", w:600});
+    el("line", {x1:-15, y1:-10, x2:-15, y2:78, stroke:"#8d8d88", "stroke-width":.3});
+    el("rect", {x:-8, y:-10, width:5, height:88, fill: css("--walk")}); // sidewalk
+    text(-5.5, 50, "sidewalk", {fs:1.4, rot:-90, fill: css("--muted")});
+    // boulevard
+    if (plan && !phases) zone("blvd", G.blvd, css("--bee"), {op:.9});
+    else if (phases) zone("blvd", G.blvd, PH[2], {op:.35});
+    else zone("blvd", G.blvd, css("--turf"));
+    el("rect", {x:-15, y:-10, width:7, height:11, fill: css("--turf"), "pointer-events":"none"});
+    if (document.getElementById("tBlvdB").checked) zone("blvdB", G.blvdB, phases ? PH[3] : css("--prairie"), {dash:".6 .4", stroke: css("--ink"), sw:.2, op: phases ? .6 : .85});
+    // property & backyard context
+    zone("back", [[69.3,50.6],[114,50.6],[114,67.8],[69.4,67.8]], "#e7e5de");
+    zone("back", [[74.6,0],[114,0],[114,50.6],[74.6,50.6]], "#e7e5de");
+    zone("back", [[48,0],[74.6,0],[74.6,9.8],[48.1,9.9]], "#e7e5de");
+    text(95, 30, "backyard (out of scope)", {fs:1.8, fill: css("--muted")});
+    // front turf base
+    if (phases) zone("z1", G.z1, css("--bee"), {op:.7});
+    else zone("z1", G.z1, css("--bee"));
+    zone("z1", [[-3,0],[0.6,3.7],[-0.2,27.5],[-3,27.5]], css("--bee"), {op: phases ? .7 : 1});
+    zone("z1", [[0,0],[20.2,0],[20.2,3.5],[0.6,3.7]], css("--turf"));
+    zone("north", [[20.2,0],[48,0],[48,3],[20.2,3.5]], css("--turf"));
+    if (!plan) zone("shade", [[33,51.3],[46.6,51.1],[69,50.6],[69.4,67.8],[33,67.8]], css("--turf"));
+    // hardscape
+    zone("drive", G.apron, css("--conc"));
+    zone("drive", G.drive, css("--conc"));
+    el("polygon", {points: pts(G.walk), fill: css("--conc"), stroke:"rgba(0,0,0,.2)", "stroke-width":.12});
+    el("polygon", {points: pts(G.deck), fill:"#bfa58a", stroke:"rgba(0,0,0,.2)", "stroke-width":.12});
+    // beds
+    if (!plan) {
+      zone("fdn", G.fdn, css("--fdn"));
+      zone("corner", G.cornerExisting, css("--fdn"));
+    } else {
+      zone("corner", G.cornerBed, phases ? PH[1] : css("--prairie"), {op: phases ? .75 : 1});
+      zone("fdn", G.stumpIsland, phases ? PH[1] : css("--prairie"), {op: phases ? .75 : .85});
+      zone("fdn", G.fdn, phases ? PH[1] : css("--fdn"), {op: phases ? .75 : 1});
+      zone("shade", G.shadeN, phases ? PH[2] : css("--shade"), {op: phases ? .75 : 1});
+      zone("shade", G.shadeS, phases ? PH[2] : css("--shade"), {op: phases ? .75 : 1});
+      zone("path", G.path, "#c8b49a");
+      zone("border", G.border, phases ? PH[3] : css("--prairie"), {op: phases ? .75 : .9});
+      // rain barrel + pocket
+      const rp = el("circle", {cx:12.5, cy:51.5, r:3, fill: css("--water"), "fill-opacity":.55, stroke: css("--water"), "stroke-width":.3, "stroke-dasharray":".6 .3", class:"zone", "data-z":"rain"});
+      rp.addEventListener("click", e => { e.stopPropagation(); show("rain"); }); (Z.rain = Z.rain || []).push(rp);
+      const rb = el("circle", {cx:19.6, cy:40.2, r:1.1, fill: css("--water"), stroke:"#3d7ea6", "stroke-width":.2, class:"zone", "data-z":"rain"});
+      rb.addEventListener("click", e => { e.stopPropagation(); show("rain"); }); Z.rain.push(rb);
+      el("path", {d:"M19.6 41.3 C 18 46, 15 48, 13.8 49", fill:"none", stroke:"#3d7ea6", "stroke-width":.3, "stroke-dasharray":".7 .4"});
+    }
+    const st = el("circle", {cx:12.4, cy:30.5, r:1.3, fill:"#7a5a3a", stroke:"#4a3522", "stroke-width":.25, class:"zone", "data-z":"stump"});
+    st.addEventListener("click", e => { e.stopPropagation(); show("stump"); }); (Z.stump = Z.stump || []).push(st);
+    text(10.8, 29.8, "T1 stump", {fs:1.2, anchor:"end", w:600, fill:"#4a3522"});
+    zone("house", G.house, css("--house"));
+    text(47, 25, "HOUSE", {fs:2.4, fill:"#fff", w:700});
+    text(10, 15, "driveway", {fs:1.6, fill: css("--muted")});
+    // fixtures
+    const hv = el("polygon", {points: pts(G.ac), fill:"#a8873f", stroke:"#6b5520", "stroke-width":.15, class:"zone", "data-z":"hive"});
+    hv.addEventListener("click", e => { e.stopPropagation(); show("hive"); }); (Z.hive = Z.hive || []).push(hv);
+    el("rect", {x:75, y:23.5, width:3.2, height:3.2, fill:"#9a9a94", stroke:"#666", "stroke-width":.12});
+    text(79.2, 25.6, "AC", {fs:1.1, anchor:"start", fill: css("--muted")});
+    text(79.5, 40, "deck", {fs:1.3, fill:"#5a4632"});
+    text(61.8, 54.6, "old hive", {fs:1.1, fill:"#fff"});
+    el("line", {x1:7.4, y1:67.6, x2:114, y2:67.6, stroke:"#6b5136", "stroke-width":.6});
+    text(24, 70.4, "neighbor's 6 ft privacy fence", {fs:1.3, fill: css("--muted")});
+    el("line", {x1:69, y1:50.6, x2:69.4, y2:67.8, stroke:"#5b4a3a", "stroke-width":.45});
+    text(71.2, 59, "backyard fence", {fs:1.2, rot:90, fill: css("--muted")});
+    text(22.2, 31, "door", {fs:1.2, anchor:"start", fill:"#fff"});
+    // lot line
+    el("polygon", {points: pts(G.lot), fill:"none", stroke: css("--lot"), "stroke-width":.25, "stroke-dasharray":"1.2 .6", "pointer-events":"none"});
+    // labels for plan
+    if (plan) {
+      const L = phases
+        ? [[33.5,45.2,"Phase 1"],[6.5,35.5,"Phase 1"],[42,64,"Phase 2"],[6,49,"touch-ups"],[17,64,"Phase 3"]]
+        : [[33.5,45.2,"corner prairie"],[42,64,"shade bed"],[17,64,"south border"],[6,49,"bee lawn"],[-11.5,48,"boulevard"],[6.5,35.5,"stump island"]];
+      L.forEach(([x,y,s]) => s && text(x, y, s, {fs:1.7, w:600, rot: x < -8 ? -90 : 0}));
+      if (!phases) text(51, 58, "path", {fs:1.2, fill: css("--muted")});
+    } else {
+      [[8,48,"bee lawn"],[38.5,45.5,"bed"],[51,62,"lawn (under T4)"],[-11.5,48,"boulevard"]].forEach(([x,y,s]) => text(x,y,s,{fs:1.6, rot: x < -8 ? -90 : 0, fill: css("--muted")}));
+    }
+    // trees
+    if (document.getElementById("tTrees").checked) {
+      trees.forEach(t => {
+        const c = el("circle", {cx:t.c[0], cy:t.c[1], r:t.r, fill: css("--tree"), "fill-opacity":.12, stroke: css("--tree"), "stroke-width":.25, "stroke-dasharray":"1 .5", class:"zone", "data-z":t.id});
+        c.addEventListener("click", e => { e.stopPropagation(); show(t.id); }); (Z[t.id] = Z[t.id] || []).push(c);
+        el("circle", {cx:t.c[0], cy:t.c[1], r:.6, fill: css("--tree"), "pointer-events":"none"});
+        text(t.c[0]+1.2, t.c[1]-1, t.id, {fs:1.5, anchor:"start", fill: css("--tree"), w:700});
+      });
+    }
+    // dimensions, scale, north
+    if (document.getElementById("tDims").checked) {
+      const d = "#555";
+      el("line", {x1:116.5, y1:0, x2:116.5, y2:67.8, stroke:d, "stroke-width":.15});
+      text(118.5, 34, "≈68 ft frontage", {fs:1.4, rot:90, fill:d});
+      el("line", {x1:0, y1:-2.5, x2:114, y2:-2.5, stroke:d, "stroke-width":.15});
+      text(57, -3.4, "≈114 ft lot depth", {fs:1.4, fill:d});
+      el("line", {x1:-15, y1:73.5, x2:20.8, y2:73.5, stroke:d, "stroke-width":.15});
+      text(2.9, 75.6, "curb → house front ≈ 36 ft", {fs:1.3, fill:d});
+    }
+    // scale bar
+    el("rect", {x:84, y:72, width:10, height:.8, fill:"#333"}); el("rect", {x:94, y:72, width:10, height:.8, fill:"#fff", stroke:"#333", "stroke-width":.1});
+    text(84, 71.2, "0", {fs:1.2}); text(94, 71.2, "10", {fs:1.2}); text(104, 71.2, "20 ft", {fs:1.2});
+    // north arrow (true north is ~9° counter-clockwise from plan north)
+    const g = el("g", {transform:"translate(110 -5) rotate(-8.9)"});
+    el("path", {d:"M0 -3 L1.1 1.4 L0 .6 L-1.1 1.4 Z", fill:"#333"}, g);
+    const tn = el("text", {x:0, y:-3.6, "font-size":1.8, "text-anchor":"middle", fill:"#333", "font-weight":700}, g); tn.textContent = "N";
+    if (sel) mark(sel);
+  }
+
+  function mark(id) { svg.querySelectorAll(".zone.sel").forEach(e => e.classList.remove("sel")); (Z[id] || []).forEach(e => e.classList.add("sel")); }
+  function show(id) {
+    sel = id; mark(id);
+    const i = INFO[id] || INFO.z1;
+    document.getElementById("panel").innerHTML = `<h2>${i.t}</h2><div class="meta">${i.a ? `<span class="chip">${i.a}</span>` : ""}${i.light ? `<span class="chip">${i.light}</span>` : ""}${i.ph ? `<span class="chip">${i.ph}</span>` : ""}</div>${i.body}`;
+  }
+  function legend() {
+    const rows = view === "phases"
+      ? [["--p1","Phase 1: corner bed, stump island, foundation, rain barrel (fall 2026 to spring 2027)"],["--bee","Existing bee lawn: touch-ups in late winter 2027"],["--p2","Phase 2: shade bed, boulevard bee lawn (2027)"],["--p3","Phase 3: south border, boulevard Option B (2028)"]]
+      : view === "plan"
+      ? [["--prairie","Sun prairie bed"],["--shade","Shade / woodland bed"],["--bee","Bee lawn (low-mow)"],["--fdn","Foundation shrubs"],["--water","Rain barrel + overflow pocket"],["--conc","Paving"]]
+      : [["--bee","Lawn (already mostly bee lawn)"],["--turf","Turf"],["--fdn","Existing beds"],["--conc","Paving"],["--house","House"]];
+    document.getElementById("legend").innerHTML = `<h3>Legend</h3>` + rows.map(([v,s]) => `<div><span class="sw" style="background:${css(v)}"></span>${s}</div>`).join("") + `<div><span class="sw" style="background:transparent;border:1px dashed ${css("--tree")}"></span>Tree canopy (approx.)</div>`;
+  }
+  document.querySelectorAll("[data-view]").forEach(b => b.addEventListener("click", () => {
+    view = b.dataset.view;
+    document.querySelectorAll("[data-view]").forEach(x => x.setAttribute("aria-pressed", x === b));
+    draw(); legend();
+  }));
+  ["tTrees","tDims","tBlvdB"].forEach(id => document.getElementById(id).addEventListener("change", draw));
+  draw(); legend(); show("corner");
+})();
+</script>
+</body>
+</html>
