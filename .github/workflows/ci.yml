@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  privacy:
+    name: Privacy check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Test the checker
+        run: python3 scripts/test_check_pii.py
+      - name: Scan files and every commit
+        env:
+          # Optional repository secret: private terms (name, street, email), one per line.
+          PII_DENYLIST: ${{ secrets.PII_DENYLIST }}
+        run: python3 scripts/check_pii.py --all --commits "${{ github.event.pull_request.head.sha || github.sha }}"
+
+  budget:
+    name: Budget files up to date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 budget/build_budget.py --check

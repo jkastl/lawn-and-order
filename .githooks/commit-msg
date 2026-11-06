@@ -1,0 +1,3 @@
+#!/bin/sh
+# Blocks commit messages and trailers that contain personal data.
+exec python3 "$(git rev-parse --show-toplevel)/scripts/check_pii.py" --message "$1"

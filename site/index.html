@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Privacy: this page loads nothing from other hosts. The policy below blocks
+     third-party scripts, fonts, embeds (maps, video) and trackers outright. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; font-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Lawn &amp; Order</title>
+<meta name="description" content="A three-season plan for turning a suburban front lawn in Rochester, MN into low-maintenance pollinator habitat: site model, plant palette, timeline and budget.">
+<meta name="theme-color" content="#2f4a32" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151a14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f4a32'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23e7b866'/%3E%3Cg fill='%23f4efe2'%3E%3Cellipse cx='16' cy='7.5' rx='3.2' ry='4.5'/%3E%3Cellipse cx='16' cy='24.5' rx='3.2' ry='4.5'/%3E%3Cellipse cx='7.5' cy='16' rx='4.5' ry='3.2'/%3E%3Cellipse cx='24.5' cy='16' rx='4.5' ry='3.2'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#overview">Lawn <span>&amp;</span> Order</a>
+    <nav aria-label="Sections">
+      <a href="#map">Site model</a>
+      <a href="#zones">Zones</a>
+      <a href="#plants">Plants</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#budget">Budget</a>
+      <a href="#rules">Rules</a>
+      <a href="#questions">To-do</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section id="overview" class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Rochester, MN · USDA zones 4b–5a · <span data-asof></span></p>
+      <h1>Front lawn to pollinator habitat, on a weekend budget</h1>
+      <p class="lede">Smother turf with cardboard and free city mulch, plant native plugs densely, keep a mown edge so it looks intentional, and lean on the bee lawn that's already there. Three growing seasons, six weekends, mostly free materials.</p>
+      <div class="stats" data-stats></div>
+      <div class="deadlines" data-deadlines></div>
+    </div>
+  </section>
+
+  <section id="principles" class="band">
+    <div class="wrap">
+      <h2 class="sr-only">Principles</h2>
+      <ol class="principles" data-principles></ol>
+    </div>
+  </section>
+
+  <section id="map">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Site model</h2>
+        <p>Drawn to scale with the street on the left. Tap any area for details.</p>
+      </div>
+      <div class="map-grid">
+        <div class="card map-card">
+          <div class="map-bar">
+            <div class="seg" role="group" aria-label="View">
+              <button type="button" data-view="existing" aria-pressed="false">Existing</button>
+              <button type="button" data-view="plan" aria-pressed="true">Plan</button>
+              <button type="button" data-view="phases" aria-pressed="false">Phases</button>
+            </div>
+            <div class="seg" role="group" aria-label="Extent">
+              <button type="button" data-crop="front" aria-pressed="true">Front yard</button>
+              <button type="button" data-crop="lot" aria-pressed="false">Whole lot</button>
+            </div>
+          </div>
+          <svg id="site-svg" role="img" aria-label="To-scale site plan of the front yard"></svg>
+          <div class="map-toggles">
+            <label><input type="checkbox" data-layer="trees" checked> Tree canopies</label>
+            <label><input type="checkbox" data-layer="dims" checked> Dimensions</label>
+            <label><input type="checkbox" data-layer="blvdB"> Boulevard Option B</label>
+          </div>
+          <div class="legend" data-legend></div>
+          <p class="fine">Scaled from an aerial photo, so expect ±2–3 ft. Tape-measure before cutting bed edges.</p>
+        </div>
+        <aside class="card detail" id="detail" tabindex="-1" aria-live="polite"></aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="zones" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Zones</h2>
+        <p>About 1,100 sq ft goes to native beds along the house and the south line. The open lawn is already mostly bee lawn and just needs touch-ups.</p>
+      </div>
+      <div class="chips" role="group" aria-label="Filter zones by phase" data-zone-filter>
+        <button type="button" data-ph="all" aria-pressed="true">All</button>
+        <button type="button" data-ph="1" aria-pressed="false">Phase 1</button>
+        <button type="button" data-ph="2" aria-pressed="false">Phase 2</button>
+        <button type="button" data-ph="3" aria-pressed="false">Phase 3</button>
+      </div>
+      <div class="zone-cards" data-zones></div>
+    </div>
+  </section>
+
+  <section id="plants">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Plant palette &amp; bloom calendar</h2>
+        <p>Something in flower from crocus in March to aromatic aster in October. Pick a zone to see its share of the season. Bloom times are typical for southern Minnesota and shift a week or two with the weather.</p>
+      </div>
+      <div class="chips" role="group" aria-label="Filter plants by zone" data-plant-filter></div>
+      <div class="card bloom" data-bloom></div>
+    </div>
+  </section>
+
+  <section id="timeline" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Timeline</h2>
+        <p>Six working weekends over three seasons. Tick steps off as you go; progress stays in this browser only.</p>
+      </div>
+      <div class="progress" data-progress></div>
+      <ol class="steps" data-steps></ol>
+    </div>
+  </section>
+
+  <section id="budget">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Budget</h2>
+        <p>Plugs are most of the cost. Change the inputs to see how the totals move; nothing you enter leaves this page.</p>
+      </div>
+      <div data-budget></div>
+    </div>
+  </section>
+
+  <section id="rules" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>What the rules allow</h2>
+        <p>The private yard needs no permit as long as the planting is intentional. The boulevard is city land: anything other than turf needs a free permit, and the city keeps control of the trees.</p>
+      </div>
+      <div class="rules-grid">
+        <div><h3>Private front yard</h3><ul class="rule-list" data-rules-private></ul></div>
+        <div><h3>Boulevard (curb to sidewalk)</h3><ul class="rule-list" data-rules-blvd></ul></div>
+      </div>
+      <h3 class="sub-h">Programs &amp; free materials</h3>
+      <div class="programs" data-programs></div>
+    </div>
+  </section>
+
+  <section id="questions">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Open questions</h2>
+        <p>The trees, the downspouts and whether an HOA applies will move zone boundaries more than anything else.</p>
+      </div>
+      <ul class="checklist card" data-questions></ul>
+    </div>
+  </section>
+
+  <section id="sources" class="band">
+    <div class="wrap">
+      <details>
+        <summary><h2>Sources</h2></summary>
+        <ul class="sources" data-sources></ul>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>Prices and program details were checked in November 2026 and will drift. Boulevard rules are Rochester-specific: check your own city before planting in the right-of-way.</p>
+    <p>No cookies, analytics or third-party requests. Checklist ticks are saved only in your browser.</p>
+    <p><a href="https://github.com/jkastl/lawn-and-order">Source on GitHub</a> · MIT License</p>
+  </div>
+</footer>
+
+<noscript><p class="noscript">This page needs JavaScript for the site model and calculator. The full plan is also in <a href="https://github.com/jkastl/lawn-and-order/blob/main/docs/conversion-plan.md">docs/conversion-plan.md</a>.</p></noscript>
+<script src="map.js"></script>
+<script src="budget.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

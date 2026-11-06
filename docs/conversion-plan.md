@@ -1,6 +1,6 @@
 # Front Yard Conversion Plan
 
-As of Nov 6, 2026
+As of Nov 6, 2026. The interactive version, with the site model, bloom calendar and budget calculator, is at <https://jkastl.github.io/lawn-and-order/>.
 
 ## Goals and constraints
 
@@ -59,7 +59,7 @@ The concept puts about 1,100 sq ft into native beds along the house and the sout
 | Z4 South strip under T4 | \~450 sq ft bed + \~110 sq ft path | Shade to part shade | Woodland-edge planting: Pennsylvania sedge as the groundcover, wild geranium, zigzag goldenrod, big-leaved aster, wild ginger, plus 2–3 native shrubs. Keep a 3 ft mulch path along the house to the backyard fence. Remove the old hive first (see below) | 2 |
 | Z1 Open front lawn | \~790 sq ft (already mostly bee lawn) | Sun to part sun | Touch up the existing bee lawn. Frost-seed white clover and self-heal into thin spots in late winter. Add early bloomers (native violets, wild strawberry, optional crocus) to cover the weeks before the clover gets going. Mow at 3–4 in., a few times a year | 1 (touch-ups, late winter 2027) |
 | Z1 South border | \~190 sq ft bed | Part sun: the neighbor's 6 ft fence shades it from the south | Prairie border along the south line, tying Z2 to the sidewalk. Leave a 2 ft access strip along the neighbor's fence. Favor part-sun species: wild bergamot, golden alexanders, zigzag goldenrod, prairie dropseed | 3 |
-| Z5 Boulevard | \~265 sq ft | Part shade in the north half (T2), part sun to the south | Option A: bee lawn (lowest risk). Option B: a permitted native strip kept under \~24 in., set back 18 in. from the curb and sidewalk. See *Boulevard* below | 3 |
+| Z5 Boulevard | \~265 sq ft | Part shade in the north half (T2), part sun to the south | Option A: bee lawn (lowest risk). Option B: a permitted native strip kept under \~24 in., set back 18 in. from the curb and sidewalk. See *Boulevard* below | 2 (Option A) or 3 (Option B) |
 
 **Why this order.** Phase 1 grows from beds that already exist, so it looks finished in its first summer. Phase 2 tackles the zone where turf grows worst (shade from T4, T5 and the fence) and seeds the boulevard in the late-summer window. Phase 3 waits until the boulevard permit is in hand and you've seen how the first two phases hold up.
 
@@ -142,7 +142,7 @@ Six working weekends over three seasons get you there, and the first could happe
 
 ## Budget
 
-The base plan runs about $1,290–$2,000 over three seasons, or roughly $890–$1,600 if the $400 Lawns to Legumes grant comes through. Plugs are most of the cost. The detailed workbook (built by `budget/budget_generator.py`) has every line item, with quantities driven by the zone areas and the plug price.
+The base plan runs about $1,290–$2,000 over three seasons, or roughly $890–$1,600 if the $400 Lawns to Legumes grant comes through. Plugs are most of the cost. Every line item, with quantities driven by the zone areas and the plug price, is in [`budget/budget.md`](../budget/budget.md) (also as CSV), and the [website](https://jkastl.github.io/lawn-and-order/#budget) has a live calculator.
 
 | Phase | Timing | Base plan | Optional extras |
 | --- | --- | --- | --- |
@@ -178,7 +178,7 @@ The biggest unknowns are the trees, where the downspouts are, and whether an HOA
 
 ## Sources
 
-All pages were opened Nov 6, 2026. Prices in the budget workbook carry their own source notes.
+All pages were opened Nov 6, 2026. Prices in the budget carry their own source notes.
 
 - [Lawns to Legumes: About + Apply](https://bluethumb.org/lawns-to-legumes/apply/) (Blue Thumb / BWSR)
 - [Rochester Garden Grants](https://www.rochestermn.gov/home-property-utilities/sustainability-environment/garden-grants/)

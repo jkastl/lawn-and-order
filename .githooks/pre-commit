@@ -1,0 +1,3 @@
+#!/bin/sh
+# Blocks commits that stage personal data. Enable with: git config core.hooksPath .githooks
+exec python3 "$(git rev-parse --show-toplevel)/scripts/check_pii.py" --staged
