@@ -1,0 +1,11 @@
+#!/bin/sh
+# Blocks pushes of commits whose author/committer email isn't a GitHub noreply
+# address, or whose names/messages match the private denylist.
+root=$(git rev-parse --show-toplevel)
+status=0
+while read -r local_ref local_sha remote_ref remote_sha; do
+  case "$local_sha" in
+    *[!0]*) python3 "$root/scripts/check_pii.py" --commits "$local_sha" || status=1 ;;
+  esac
+done
+exit $status

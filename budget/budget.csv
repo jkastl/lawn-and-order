@@ -1,0 +1,25 @@
+phase,when,item,qty,unit,unit_low,unit_high,total_low,total_high,optional,note
+1,Fall 2026,Cardboard for smothering,1,lot,0.00,0.00,0.00,0.00,no,"Free: appliance, bike and furniture store boxes"
+1,Fall 2026,Mulch over cardboard,3.3,cu yd,0.00,10.00,0.00,33.00,no,City giveaway (donation)
+1,Fall 2026,Soil test,1,test,20.00,30.00,20.00,30.00,yes,"Estimate, unverified: UMN Soil Testing Lab"
+1,Fall 2026,Crocus bulbs in the lawn for early-spring forage,100,bulbs,0.25,0.45,25.00,45.00,yes,"Estimate, unverified. Non-native but well-behaved; plant before the ground freezes"
+1,Feb–Mar 2027,"Frost-seed touch-up: white clover, self-heal, thyme",1,lot,15.00,40.00,15.00,40.00,no,"Estimate, unverified. BWSR DIY rates per 1,000 sq ft: ~3 oz clover, ~4 oz self-heal, ~1 oz thyme"
+1,Spring 2027,Gopher State One Call (811) locate,1,call,0.00,0.00,0.00,0.00,no,Free; required before digging
+1,Spring 2027,"Prairie plugs, corner bed",150,plugs,1.97,2.75,295.50,412.50,no,Buy after the Lawns to Legumes award notice to keep it reimbursable
+1,Spring 2027,Low natives around the stump island,60,plugs,1.97,2.75,118.20,165.00,no,Full afternoon sun since T1 came down
+1,Spring 2027,"Native shrubs, foundation bed",2,each,25.00,45.00,50.00,90.00,no,"Estimate, unverified"
+1,Spring 2027,Shallow dish for a bee bath on the stump,1,each,0.00,20.00,0.00,20.00,yes,Estimate; a saucer with pebbles works
+1,Spring 2027,Native violets / wild strawberry plugs for the lawn,38,plugs,1.97,2.75,74.86,104.50,yes,One tray tucked into thin spots; early bloomers that tolerate mowing
+1,Spring 2027,Rain barrel at front downspout,1,each,70.00,130.00,70.00,130.00,yes,City cost-share (90% up to $100) only in Cascade Creek pilot neighborhoods so far
+1,Spring 2027,Downspout diverter + overflow hose to bed,1,kit,20.00,40.00,20.00,40.00,yes,Route overflow 10+ ft from the foundation
+2,Jun 2027,"Mulch over cardboard, Z4 + south border",7.9,cu yd,0.00,10.00,0.00,79.00,no,City giveaway (donation)
+2,Aug 2027,"Bee lawn seed, boulevard (Option A)",1.3,lb,17.50,30.00,22.75,39.00,no,UMN bee lawn mix
+2,Aug 2027,Compost / topsoil topdressing,1,cu yd,0.00,10.00,0.00,10.00,no,City topsoil or the Olmsted County compost site
+2,Aug 2027,Core aerator rental,1,rental,60.00,90.00,60.00,90.00,yes,Only if the boulevard turf is compacted; hand tools are fine for ~265 sq ft
+2,Sep 2027,"Woodland plugs, shade bed (Z4)",198,plugs,1.97,2.75,390.06,544.50,no,"Pennsylvania sedge, wild geranium, zigzag goldenrod, etc."
+2,Sep 2027,"Native shrubs, shade bed",3,each,25.00,45.00,75.00,135.00,no,"Estimate, unverified"
+3,Fall 2027,"Mulch over cardboard, boulevard (Option B)",1.9,cu yd,0.00,10.00,0.00,19.00,yes,Only if Option B
+3,Winter 2027–28,Natural Landscape Permit (boulevard),1,permit,0.00,0.00,0.00,0.00,yes,Free; only if Option B
+3,Spring 2028,"Prairie plugs, south border",114,plugs,1.97,2.75,224.58,313.50,no,"Seed instead (~$50 per 500 sq ft) to save ~$200, but slower and weedier"
+3,Spring 2028,"Short native plugs, boulevard (Option B)",91,plugs,1.97,2.75,179.27,250.25,yes,Needs a free Natural Landscape Permit
+3,Spring 2028,Replacement plugs (losses),52,plugs,1.97,2.75,102.44,143.00,no,Allowance: a share of all required plugs
