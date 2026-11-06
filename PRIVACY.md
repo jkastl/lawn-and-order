@@ -20,7 +20,11 @@ This repo and its website are public. The plan describes a real yard, so it take
 | Git hooks (`.githooks/`) | Run the check on staged files, on commit messages, and on the author/committer of every commit you push. |
 | CI (`.github/workflows/ci.yml`) | Runs the same check on every push and pull request, over all files and every commit in history. |
 | Pages deploy (`.github/workflows/pages.yml`) | Publishes only `site/`, and only after the check passes. |
-| The website | Loads nothing from other hosts. Its Content Security Policy blocks third-party scripts, fonts, trackers and embeds (maps, video). No cookies or analytics. Checklist ticks stay in the visitor's own browser. |
+| The website | Its Content Security Policy allows only GoatCounter (below) and blocks every other third-party script, font, tracker and embed (maps, video). No cookies. Checklist ticks and budget inputs stay in the visitor's own browser. |
+
+## Page counts
+
+`site/stats.js` counts visits with [GoatCounter](https://www.goatcounter.com/) at <https://jkastl.goatcounter.com/>, the same account and script as [jkastl.github.io](https://github.com/jkastl/jkastl.github.io/blob/main/shared/stats.js). GoatCounter sets no cookies and doesn't store IP addresses or other personal data. It records the page path, referrer, browser, screen size and approximate location (country or region). The script loads with an integrity hash, so a tampered copy won't run, and it does nothing off `github.io`, so local previews never count. If you change hosts or the site code, update the Content Security Policy in `site/index.html` too.
 
 ## One-time setup on each machine
 

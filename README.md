@@ -41,6 +41,8 @@ Turn on the privacy hooks once per clone:
 git config core.hooksPath .githooks
 ```
 
+Visits are counted with GoatCounter (no cookies, no personal data) at <https://jkastl.goatcounter.com/>, via `site/stats.js`. Link previews use the Open Graph tags in `site/index.html` and the image at `site/og.png`.
+
 Pushes to `main` deploy `site/` to GitHub Pages once the privacy check passes. To set that up, go to **Settings → Pages → Build and deployment** and set the source to **GitHub Actions**.
 
 ## Caveats

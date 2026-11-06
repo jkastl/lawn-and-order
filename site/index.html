@@ -3,12 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!-- Privacy: this page loads nothing from other hosts. The policy below blocks
-     third-party scripts, fonts, embeds (maps, video) and trackers outright. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; font-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<!-- Privacy: the only other hosts this page may reach are GoatCounter's script
+     (gc.zgo.at) and its counter (jkastl.goatcounter.com): no cookies, no
+     personal data. The policy blocks every other third-party script, font,
+     embed (maps, video) and tracker. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https://jkastl.goatcounter.com; style-src 'self' 'unsafe-inline'; script-src 'self' https://gc.zgo.at; connect-src 'self' https://jkastl.goatcounter.com; font-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
-<title>Lawn &amp; Order</title>
-<meta name="description" content="A three-season plan for turning a suburban front lawn in Rochester, MN into low-maintenance pollinator habitat: site model, plant palette, timeline and budget.">
+<title>Lawn &amp; Order: a pollinator front yard plan</title>
+<meta name="description" content="A three-season plan for turning a suburban front lawn in Rochester, MN into low-maintenance pollinator habitat with native plants, a bee lawn and free city mulch. Site model, bloom calendar, timeline and budget.">
+<link rel="canonical" href="https://jkastl.github.io/lawn-and-order/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Apps and demos">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Lawn &amp; Order: a pollinator front yard plan">
+<meta property="og:description" content="Turn a suburban front lawn into pollinator habitat over three seasons and six weekends, mostly with free materials. Site model, bloom calendar, timeline and budget.">
+<meta property="og:url" content="https://jkastl.github.io/lawn-and-order/">
+<meta property="og:image" content="https://jkastl.github.io/lawn-and-order/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Lawn &amp; Order: a to-scale plan of a front yard with prairie, shade and bee lawn zones">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Lawn &amp; Order: a to-scale plan of a front yard with prairie, shade and bee lawn zones">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Lawn & Order: a pollinator front yard plan",
+  "description": "A three-season plan for turning a suburban front lawn in Rochester, MN into low-maintenance pollinator habitat.",
+  "url": "https://jkastl.github.io/lawn-and-order/",
+  "inLanguage": "en-US",
+  "dateModified": "2026-11-06",
+  "about": ["Pollinator garden", "Bee lawn", "Native plants", "Lawn conversion", "Rochester, Minnesota"],
+  "isPartOf": { "@type": "WebSite", "name": "Apps and demos", "url": "https://jkastl.github.io/" }
+}
+</script>
+<script src="stats.js" defer></script>
 <meta name="theme-color" content="#2f4a32" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151a14" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f4a32'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23e7b866'/%3E%3Cg fill='%23f4efe2'%3E%3Cellipse cx='16' cy='7.5' rx='3.2' ry='4.5'/%3E%3Cellipse cx='16' cy='24.5' rx='3.2' ry='4.5'/%3E%3Cellipse cx='7.5' cy='16' rx='4.5' ry='3.2'/%3E%3Cellipse cx='24.5' cy='16' rx='4.5' ry='3.2'/%3E%3C/g%3E%3C/svg%3E">
@@ -168,8 +198,8 @@
 <footer class="foot">
   <div class="wrap">
     <p>Prices and program details were checked in November 2026 and will drift. Boulevard rules are Rochester-specific: check your own city before planting in the right-of-way.</p>
-    <p>No cookies, analytics or third-party requests. Checklist ticks are saved only in your browser.</p>
-    <p><a href="https://github.com/jkastl/lawn-and-order">Source on GitHub</a> · MIT License</p>
+    <p>Page views are counted with <a href="https://www.goatcounter.com/">GoatCounter</a>: no cookies, no personal data. Nothing else loads from other sites, and checklist ticks and budget inputs stay in your browser.</p>
+    <p><a href="https://jkastl.github.io/">More apps and demos</a> · <a href="https://github.com/jkastl/lawn-and-order">Source on GitHub</a> · MIT License</p>
   </div>
 </footer>
 
