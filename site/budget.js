@@ -56,7 +56,7 @@ window.Budget = (() => {
       </div>
       <div class="card">
         <h3>Optional extras</h3>
-        <p class="fine">Switch on what you plan to buy. The boulevard Option B lines move together.</p>
+        <p class="fine">Switch on what you plan to buy.</p>
         <div class="opt-list"></div>
       </div>
       <details class="card line-items">
@@ -74,16 +74,10 @@ window.Budget = (() => {
     });
 
     const opts = root.querySelector(".opt-list");
-    const seenGroups = new Set();
     data.items.filter(it => it.optional).forEach(it => {
-      if (it.group) {
-        if (seenGroups.has(it.group)) return;
-        seenGroups.add(it.group);
-      }
-      const label = it.group === "blvdB" ? "Boulevard Option B: permit, mulch and short native plugs" : it.item;
       const row = document.createElement("label");
       row.className = "opt";
-      row.innerHTML = `<input type="checkbox" data-opt="${it.group || itemKey(it)}"><span>${label}<small>Phase ${it.phase}</small></span><b class="opt-cost"></b>`;
+      row.innerHTML = `<input type="checkbox" data-opt="${itemKey(it)}"><span>${it.item}<small>Phase ${it.phase}</small></span><b class="opt-cost"></b>`;
       opts.appendChild(row);
     });
 
@@ -94,7 +88,7 @@ window.Budget = (() => {
 
     function render() {
       const rows = compute(data, a);
-      const on = r => !r.optional || optional.has(r.group || itemKey(r));
+      const on = r => !r.optional || optional.has(itemKey(r));
       const active = rows.filter(on);
       const lo = active.reduce((s, r) => s + r.totalLo, 0);
       const hi = active.reduce((s, r) => s + r.totalHi, 0);
@@ -124,7 +118,7 @@ window.Budget = (() => {
       // optional costs
       root.querySelectorAll("[data-opt]").forEach(i => {
         const key = i.dataset.opt;
-        const rs = rows.filter(r => r.optional && (r.group || itemKey(r)) === key);
+        const rs = rows.filter(r => r.optional && itemKey(r) === key);
         i.closest(".opt").querySelector(".opt-cost").textContent = range(
           rs.reduce((s, r) => s + r.totalLo, 0), rs.reduce((s, r) => s + r.totalHi, 0));
       });

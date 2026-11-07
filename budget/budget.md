@@ -9,13 +9,13 @@ Hypothetical plan. Areas are scaled from an aerial photo (±2–3 ft); prices ch
 | Phase | Timing | Base plan | Optional extras |
 | --- | --- | --- | --- |
 | 1: Corner bed, stump island, foundation shrubs | Fall 2026 – spring 2027 | $479–$741 | $210–$370 |
-| 2: Shade bed + boulevard bee lawn | Summer – fall 2027 | $488–$808 | $60–$90 |
-| 3: South border + replacements | Fall 2027 – spring 2028 | $327–$457 | $179–$269 |
-| **Total** |  | **$1,294–$2,005** | **$449–$729** |
+| 2: Shade bed + mulch path | Summer – fall 2027 | $465–$759 | — |
+| 3: South border + replacements | Fall 2027 – spring 2028 | $327–$457 | — |
+| **Total** |  | **$1,271–$1,956** | **$210–$370** |
 
-Net of grants entered in the assumptions ($400): **$894–$1,605** for the base plan.
+Net of grants entered in the assumptions ($400): **$871–$1,556** for the base plan.
 
-Plugs needed (base plan): **574**. Mulch and topsoil, all lines: **14.1 cu yd**.
+Plugs needed (base plan): **574**. Mulch and topsoil, all lines: **11.2 cu yd**.
 
 ## Line items
 
@@ -35,15 +35,9 @@ Plugs needed (base plan): **574**. Mulch and topsoil, all lines: **14.1 cu yd**.
 | 1 | Spring 2027 | Rain barrel at front downspout | 1 each | $70.00–$130.00 | $70–$130 | yes | City cost-share (90% up to $100) only in Cascade Creek pilot neighborhoods so far |
 | 1 | Spring 2027 | Downspout diverter + overflow hose to bed | 1 kit | $20.00–$40.00 | $20–$40 | yes | Route overflow 10+ ft from the foundation |
 | 2 | Jun 2027 | Mulch over cardboard, Z4 + south border | 7.9 cu yd | $0.00–$10.00 | $0–$79 |  | City giveaway (donation) |
-| 2 | Aug 2027 | Bee lawn seed, boulevard (Option A) | 1.3 lb | $17.50–$30.00 | $23–$39 |  | UMN bee lawn mix |
-| 2 | Aug 2027 | Compost / topsoil topdressing | 1 cu yd | $0.00–$10.00 | $0–$10 |  | City topsoil or the Olmsted County compost site |
-| 2 | Aug 2027 | Core aerator rental | 1 rental | $60.00–$90.00 | $60–$90 | yes | Only if the boulevard turf is compacted; hand tools are fine for ~265 sq ft |
 | 2 | Sep 2027 | Woodland plugs, shade bed (Z4) | 198 plugs | $1.97–$2.75 | $390–$545 |  | Pennsylvania sedge, wild geranium, zigzag goldenrod, etc. |
 | 2 | Sep 2027 | Native shrubs, shade bed | 3 each | $25.00–$45.00 | $75–$135 |  | Estimate, unverified |
-| 3 | Fall 2027 | Mulch over cardboard, boulevard (Option B) | 1.9 cu yd | $0.00–$10.00 | $0–$19 | yes | Only if Option B |
-| 3 | Winter 2027–28 | Natural Landscape Permit (boulevard) | 1 permit | $0.00 | $0–$0 | yes | Free; only if Option B |
 | 3 | Spring 2028 | Prairie plugs, south border | 114 plugs | $1.97–$2.75 | $225–$314 |  | Seed instead (~$50 per 500 sq ft) to save ~$200, but slower and weedier |
-| 3 | Spring 2028 | Short native plugs, boulevard (Option B) | 91 plugs | $1.97–$2.75 | $179–$250 | yes | Needs a free Natural Landscape Permit |
 | 3 | Spring 2028 | Replacement plugs (losses) | 52 plugs | $1.97–$2.75 | $102–$143 |  | Allowance: a share of all required plugs |
 
 ## Assumptions
@@ -55,10 +49,6 @@ Plugs needed (base plan): **574**. Mulch and topsoil, all lines: **14.1 cu yd**.
 | Plug price, high ($/plug) | 2.75 | Estimate: smaller quantities or pricier species (e.g. a prairie phlox tray at $105 = $2.76) |
 | Native shrub, low ($/each) | 25 | Estimate, unverified: 1-gal native shrub at a local nursery |
 | Native shrub, high ($/each) | 45 | Estimate, unverified: 2–3 gal native shrub |
-| Bee lawn seed, low ($/lb) | 17.5 | Nokomis East 1-lb bag $17.50 (UMN mix) |
-| Bee lawn seed, high ($/lb) | 30 | Mann Lake bee lawn mix, from $29.99 |
-| Core aerator rental, low ($) | 60 | Typical 4-hr rental ~$60–$83 |
-| Core aerator rental, high ($) | 90 | Typical full-day rental ~$90–$116 |
 | Free mulch/topsoil donation, low ($/cu yd) | 0 | City giveaway: free, donation requested |
 | Free mulch/topsoil donation, high ($/cu yd) | 10 | Guess at a reasonable donation; edit to taste |
 | Rain barrel, low ($) | 70 | County/RAM truckload sales elsewhere run ~$61–$70 (Livingston Co. MI 2026: $69.95) |
@@ -68,7 +58,6 @@ Plugs needed (base plan): **574**. Mulch and topsoil, all lines: **14.1 cu yd**.
 | **Rates** | | |
 | Plugs per sq ft (15–18 in. spacing) (plugs/sq ft) | 0.6 | 15 in. grid = 0.64/sq ft; 18 in. = 0.44/sq ft |
 | Smother mulch depth (in.) | 4 | Over cardboard |
-| Bee lawn seeding rate (lb per 1,000 sq ft) | 5 | UMN mix label rate; overseeding can go 2–4 lb |
 | Replacement allowance (% of plugs) | 0.1 | Estimate for losses in year 1 |
 | **Areas** | | |
 | Phase 1: corner bed to plant (new 165 + gaps in existing) (sq ft) | 250 | Z2 + south of wing |
@@ -76,9 +65,7 @@ Plugs needed (base plan): **574**. Mulch and topsoil, all lines: **14.1 cu yd**.
 | Phase 1: new area to smother (sq ft) | 265 | Z2 extension 165 + stump island 100 |
 | Phase 2: shade bed area for plugs (after shrubs) (sq ft) | 330 | Z4 ~450 sq ft minus ~120 sq ft under 3 shrubs |
 | Phase 2: area to smother (Z4 + south border) (sq ft) | 640 | Z4 450 + border 190 |
-| Boulevard bee lawn (Option A) (sq ft) | 265 | Boulevard south of the drive; the open front lawn is already mostly bee lawn |
 | Phase 3: south border bed (sq ft) | 190 | Z1 south border, minus a 2 ft access strip along the neighbor's fence |
-| Phase 3: boulevard core (Option B) (sq ft) | 152 | ~4 ft wide after 18 in. setbacks × ~38 ft |
 | **Grants** | | |
 | Lawns to Legumes reimbursement (if awarded) ($) | 400 | Up to $400; apply by Nov 30, 2026; set to 0 if not awarded |
 | Rochester Garden Grant (if awarded) ($) | 0 | Up to $1,000, 25% match, apply Oct 1–Dec 31 for 2027; enter the award here. Ask both programs whether they can stack |
@@ -88,9 +75,6 @@ Plugs needed (base plan): **574**. Mulch and topsoil, all lines: **14.1 cu yd**.
 - [Lawns to Legumes: Spring 2027 applications, due Nov 30, 2026, up to $400](https://bluethumb.org/lawns-to-legumes/apply/)
 - [Olmsted SWCD 2026 plant & seed sale (plug kits $80/36; bee lawn $90/1,000 sq ft)](https://www.olmstedcounty.gov/sites/default/files/2025-12/2026%20Plant%20%20Seed%20descriptions_508Compliant.pdf)
 - [New Leaf Natives 38-plug single-species trays ($75–$115)](https://newleafnatives.com/collections/single-species-trays?page=1)
-- [Nokomis East bee lawn seed, $17.50/lb, 5 lb per 1,000 sq ft](https://www.nokomiseast.org/product-page/bee-lawn-seed)
-- [Mann Lake bee lawn seed mix, $29.99–$109.99](https://www.mannlakeltd.com/seeding-forage/bee-lawn-pollinator-friendly-seed-mix)
-- [Aerator rental prices (~$81 per 4 hr, $116 per day)](https://www.housedigest.com/2253877/dont-waste-money-pricey-lawn-aerators-rent-from-home-depot/)
 - [Olmsted County compost site (suggested $20 per pickup load)](https://www.olmstedcounty.gov/residents/garbage-recycling/compost-site/compost-site-self-serve-compost)
 - [Rochester Garden Grants (up to $1,000; apply Oct 1–Dec 31)](https://www.rochestermn.gov/home-property-utilities/sustainability-environment/garden-grants/)
 - [Rochester Rain Barrel Program (90% up to $100, Cascade Creek pilot areas)](https://rochestermn.qscend.com/311/knowledgebase/article/21997)

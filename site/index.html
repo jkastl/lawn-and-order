@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Apps and demos">
 <meta property="og:locale" content="en_US">
 <meta property="og:title" content="Lawn &amp; Order: a pollinator front yard plan">
-<meta property="og:description" content="Turn a suburban front lawn into pollinator habitat over three seasons and six weekends, mostly with free materials. Site model, bloom calendar, timeline and budget.">
+<meta property="og:description" content="Turn a suburban front lawn into pollinator habitat over three seasons and five weekends, mostly with free materials. Site model, bloom calendar, timeline and budget.">
 <meta property="og:url" content="https://jkastl.github.io/lawn-and-order/">
 <meta property="og:image" content="https://jkastl.github.io/lawn-and-order/og.png">
 <meta property="og:image:type" content="image/png">
@@ -66,7 +66,7 @@
     <div class="wrap">
       <p class="eyebrow">Rochester, MN · USDA zones 4b–5a · <span data-asof></span></p>
       <h1>Front lawn to pollinator habitat, on a weekend budget</h1>
-      <p class="lede">Smother turf with cardboard and free city mulch, plant native plugs densely, keep a mown edge so it looks intentional, and lean on the bee lawn that's already there. Three growing seasons, six weekends, mostly free materials.</p>
+      <p class="lede">Smother turf with cardboard and free city mulch, plant native plugs densely, keep a mown edge so it looks intentional, and lean on the bee lawn that's already there. Three growing seasons, five weekends, mostly free materials.</p>
       <div class="stats" data-stats></div>
       <div class="deadlines" data-deadlines></div>
     </div>
@@ -83,7 +83,7 @@
     <div class="wrap">
       <div class="sec-head">
         <h2>Site model</h2>
-        <p>Drawn to scale with the street on the left. Tap any area for details.</p>
+        <p>Drawn to scale with the street on the left. Tap a shape on the map, or pick from the list under it.</p>
       </div>
       <div class="map-grid">
         <div class="card map-card">
@@ -93,16 +93,15 @@
               <button type="button" data-view="plan" aria-pressed="true">Plan</button>
               <button type="button" data-view="phases" aria-pressed="false">Phases</button>
             </div>
-            <div class="seg" role="group" aria-label="Extent">
-              <button type="button" data-crop="front" aria-pressed="true">Front yard</button>
-              <button type="button" data-crop="lot" aria-pressed="false">Whole lot</button>
-            </div>
           </div>
           <svg id="site-svg" role="img" aria-label="To-scale site plan of the front yard"></svg>
+          <div class="pick" role="group" aria-labelledby="pick-h">
+            <h3 id="pick-h" class="pick-h">Choose an area</h3>
+            <div class="pick-list" data-pick></div>
+          </div>
           <div class="map-toggles">
             <label><input type="checkbox" data-layer="trees" checked> Tree canopies</label>
             <label><input type="checkbox" data-layer="dims" checked> Dimensions</label>
-            <label><input type="checkbox" data-layer="blvdB"> Boulevard Option B</label>
           </div>
           <div class="legend" data-legend></div>
           <p class="fine">Scaled from an aerial photo, so expect ±2–3 ft. Tape-measure before cutting bed edges.</p>
@@ -143,7 +142,7 @@
     <div class="wrap">
       <div class="sec-head">
         <h2>Timeline</h2>
-        <p>Six working weekends over three seasons. Tick steps off as you go; progress stays in this browser only.</p>
+        <p>Five working weekends over three seasons. Tick steps off as you go; progress stays in this browser only.</p>
       </div>
       <div class="progress" data-progress></div>
       <ol class="steps" data-steps></ol>
@@ -164,12 +163,9 @@
     <div class="wrap">
       <div class="sec-head">
         <h2>What the rules allow</h2>
-        <p>The private yard needs no permit as long as the planting is intentional. The boulevard is city land: anything other than turf needs a free permit, and the city keeps control of the trees.</p>
+        <p>The private yard needs no permit as long as the planting is intentional. The boulevard (curb to sidewalk) is city land and already a bee lawn, so it stays as it is and isn't part of this plan.</p>
       </div>
-      <div class="rules-grid">
-        <div><h3>Private front yard</h3><ul class="rule-list" data-rules-private></ul></div>
-        <div><h3>Boulevard (curb to sidewalk)</h3><ul class="rule-list" data-rules-blvd></ul></div>
-      </div>
+      <ul class="rule-list rules-one" data-rules-private></ul>
       <h3 class="sub-h">Programs &amp; free materials</h3>
       <div class="programs" data-programs></div>
     </div>
@@ -179,9 +175,11 @@
     <div class="wrap">
       <div class="sec-head">
         <h2>Open questions</h2>
-        <p>The trees, the downspouts and whether an HOA applies will move zone boundaries more than anything else.</p>
+        <p>The trees, the downspouts and how wet the south fence line gets will move zone boundaries more than anything else.</p>
       </div>
       <ul class="checklist card" data-questions></ul>
+      <h3 class="sub-h">Answered</h3>
+      <ul class="answered card" data-answered></ul>
     </div>
   </section>
 
@@ -197,7 +195,7 @@
 
 <footer class="foot">
   <div class="wrap">
-    <p>Prices and program details were checked in November 2026 and will drift. Boulevard rules are Rochester-specific: check your own city before planting in the right-of-way.</p>
+    <p>Prices and program details were checked in November 2026 and will drift. The rules summarized here are Rochester-specific: check your own city.</p>
     <p>Page views are counted with <a href="https://www.goatcounter.com/">GoatCounter</a>: no cookies, no personal data. Nothing else loads from other sites, and checklist ticks and budget inputs stay in your browser.</p>
     <p><a href="https://jkastl.github.io/">More apps and demos</a> · <a href="https://github.com/jkastl/lawn-and-order">Source on GitHub</a> · MIT License</p>
   </div>

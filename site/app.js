@@ -56,34 +56,49 @@
       ${i.body}
       ${plants.length ? `<div class="mini-plants"><h4>Plants</h4>${plants.map(p => `<span class="pchip">${p.n}</span>`).join("")}</div>` : ""}`;
   }
+  const pick = $("[data-pick]");
   const map = SiteMap.create($("#site-svg"), {
     info: plan.areas,
-    onSelect(id, { fromMap } = {}) {
+    onSelect(id, { fromMap, fromList, viewChanged } = {}) {
       renderDetail(id);
-      if (fromMap && window.matchMedia("(max-width: 899px)").matches) {
+      if (viewChanged) syncView();
+      $$("[data-pid]", pick).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.pid === id)));
+      if ((fromMap || fromList) && window.matchMedia("(max-width: 899px)").matches) {
         const r = detail.getBoundingClientRect();
         if (r.top > window.innerHeight - 80) detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
       }
     },
   });
-  if (window.matchMedia("(min-width: 900px)").matches) map.state.crop = "lot";
-  $$("[data-crop]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.crop === map.state.crop)));
+
+  // The tappable list under the map: every area you can select, with a
+  // swatch in the same color the map uses for it in the current view.
+  pick.innerHTML = plan.pickOrder.map(([id, label]) => {
+    const a = plan.areas[id];
+    const sub = a.phase ? PHASE_NAME[a.phase] : id === "blvd" ? "Existing" : "Feature";
+    return `<button type="button" class="pick-btn" data-pid="${id}" aria-pressed="false">
+      <span class="pick-sw"></span><span class="pick-t">${label}<small>${sub}</small></span></button>`;
+  }).join("");
+  pick.addEventListener("click", e => {
+    const b = e.target.closest("[data-pid]");
+    if (b) map.select(b.dataset.pid, { fromList: true });
+  });
+  function renderPick() {
+    $$("[data-pid]", pick).forEach(b => { b.querySelector(".pick-sw").style.background = map.colorOf(b.dataset.pid); });
+  }
 
   function renderLegend() {
     $("[data-legend]").innerHTML = map.legend().map(([c, s]) =>
       `<span class="lg"><span class="sw${c ? "" : " sw-tree"}"${c ? ` data-c="${c}"` : ""}></span>${s}</span>`).join("");
     $$("[data-legend] .sw[data-c]").forEach(sw => { sw.style.background = sw.dataset.c; });
   }
-  $$("[data-view]").forEach(b => b.addEventListener("click", () => {
-    $$("[data-view]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-    map.set("view", b.dataset.view); renderLegend();
-  }));
-  $$("[data-crop]").forEach(b => b.addEventListener("click", () => {
-    $$("[data-crop]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
-    map.set("crop", b.dataset.crop);
-  }));
+  function syncView() {
+    $$("[data-view]").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.view === map.state.view)));
+    renderLegend();
+    renderPick();
+  }
+  $$("[data-view]").forEach(b => b.addEventListener("click", () => { map.set("view", b.dataset.view); syncView(); }));
   $$("[data-layer]").forEach(c => c.addEventListener("change", () => { map.set(c.dataset.layer, c.checked); renderLegend(); }));
-  map.draw(); renderLegend(); map.select("corner");
+  map.draw(); syncView(); map.select("corner");
 
   // ---------- zones ----------
   const zoneWrap = $("[data-zones]");
@@ -181,15 +196,16 @@
   // ---------- rules + programs ----------
   const ruleLi = r => `<li><b>${r.t}</b><span>${r.d}</span>${r.url ? `<a href="${r.url}" rel="noopener noreferrer" target="_blank">Source ↗</a>` : ""}</li>`;
   $("[data-rules-private]").innerHTML = plan.rules.private.map(ruleLi).join("");
-  $("[data-rules-blvd]").innerHTML = plan.rules.boulevard.map(ruleLi).join("");
   $("[data-programs]").innerHTML = plan.programs.map(p => `
     <a class="card program" href="${p.url}" rel="noopener noreferrer" target="_blank">
       <h4>${p.t} ↗</h4><p class="offer">${p.offer}</p><p>${p.fit}</p></a>`).join("");
 
   // ---------- open questions ----------
   const answered = new Set(store.get("questions", []));
-  $("[data-questions]").innerHTML = plan.openQuestions.map(q => `
+  $("[data-questions]").innerHTML = plan.openQuestions.filter(q => !q.a).map(q => `
     <li><label><input type="checkbox" data-q="${q.id}" ${answered.has(q.id) ? "checked" : ""}><span>${q.t}</span></label></li>`).join("");
+  $("[data-answered]").innerHTML = plan.openQuestions.filter(q => q.a).map(q => `
+    <li><span class="ans-q">${q.t}</span><span class="ans-a">${q.a}</span></li>`).join("");
   $("[data-questions]").addEventListener("change", e => {
     const id = e.target.dataset.q;
     if (!id) return;
