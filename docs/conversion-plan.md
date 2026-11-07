@@ -76,10 +76,9 @@ The concept puts about 1,100 sq ft into native beds along the house and the sout
 - **Watch for** root suckers in the first year or two (clip them), and a soft dip forming as the roots decay (top it up with free topsoil).
 - **Skip a bee hotel on the stump.** Ground-level wood stays damp. A nesting block works better mounted 3–6 ft up on a sunny, sheltered wall or post.
 
-**The old beehive.** A dead colony's hive sits on the south side of the house, where the shade bed and path go. Deal with it before the Phase 2 smother.
+**The old beehive.** A dead colony's hive sits on the south side of the house, where the shade bed and path go. It's being removed before the Phase 2 smother.
 
-- **Get it looked at first.** If it's a managed honey bee hive, have a local beekeeper check it before it's moved. Old comb can carry American foulbrood spores, and robber bees from other hives can carry them home. Close the entrance until then.
-- **Then remove it** or hand the equipment to that beekeeper. Don't leave old comb out in the open.
+- **Don't leave old comb out.** Bag or bin it. Comb can carry American foulbrood spores, and robber bees from other hives can carry them home.
 - **That frees its \~25 sq ft** for the shade bed.
 
 ## Rain barrel and runoff
@@ -150,7 +149,7 @@ The biggest unknowns are the trees, where the downspouts are, and how wet the so
 - [x] Is there an HOA or recorded covenant covering landscaping? **No HOA.**
 - [ ] Trees T2–T5: confirm species (the Street View guesses are in Site baseline). For the T1 stump: what tree it was (some species sucker from the roots). T4 and T5 decide how shady Z4 really is
 - [ ] Where are the front downspouts? The front door is confirmed: just south of the garage, up a short stoop
-- [ ] Old beehive: is it a managed honey bee hive, and is there a local beekeeper who can check it?
+- [x] Old beehive: what happens to it? **It's being removed before the shade bed goes in.**
 - [ ] What's in the existing beds (Z2, Z3), and what's worth keeping?
 - [ ] Sun check: phone photos of the front at roughly 10 am, 1 pm and 5 pm on a sunny day (in spring, once leaves are out)
 - [ ] Ground-level photos: from each front corner
