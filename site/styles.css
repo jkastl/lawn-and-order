@@ -282,3 +282,11 @@ main > section { padding: 44px 0; }
 .pick-btn[aria-pressed="true"]::after { color: var(--accent); }
 .pick-sw { width: 22px; height: 22px; border-radius: 6px; flex: none; border: 1px solid rgba(0, 0, 0, .2); }
 .pick-t small { display: block; font-size: .75rem; margin-top: 2px; }
+
+/* answered questions */
+.answered { list-style: none; margin: 0; padding: 4px 16px; max-width: 820px; }
+.answered li { border-top: 1px solid var(--line); padding: 12px 0 12px 32px; position: relative; }
+.answered li:first-child { border-top: 0; }
+.answered li::before { content: "✓"; position: absolute; left: 4px; top: 12px; font-weight: 800; color: var(--p2); }
+.ans-q { display: block; color: var(--muted); font-size: .88rem; }
+.ans-a { display: block; font-weight: 600; }

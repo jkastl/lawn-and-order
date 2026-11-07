@@ -17,6 +17,7 @@ The plan replaces about half the front-yard turf with native beds, and builds on
 - Scope is the front yard only: the property line to the house front. The city boulevard is already a bee lawn and stays as it is
 - Labor: a couple of weekends per season, a few people, hand tools and the odd rental
 - No heavy equipment, regrading, or new hardscape in the base plan
+- No herbicides anywhere, on principle: turf is smothered rather than sprayed, and weeds are pulled by hand
 - Southeast Minnesota, USDA zones 4b–5a; plants must handle winter, plow snow and road salt near the street
 
 **Principles**
@@ -31,6 +32,8 @@ The plan replaces about half the front-yard turf with native beds, and builds on
 The lot measures about 68 ft of frontage by 114 ft deep (\~7,700 sq ft), and the front yard holds roughly 2,050 sq ft of lawn, including the boulevard. Most of the open front lawn is already a clover-rich bee lawn, though the clover is slow to get going in spring. All dimensions below are scaled from an aerial photo and calibrated to the recorded lot area, so treat them as ±2–3 ft until they're tape-measured. Mapped parcel lines are often offset several feet from the imagery.
 
 **Orientation.** The lot runs about 9° off true north, and the house faces the street to the west, slightly north of due west. The plan and site model use "plan north" (the street is on the left, running up and down). The front gets afternoon and evening sun. The house shades it in the morning. The lawn slopes gently down from the house to the sidewalk, typical of split-entry grading.
+
+**Drainage.** The yard has good slope all around and drains well everywhere except a strip along the south fence line, which stays wet. That strip runs under the south border and the outer edge of the shade bed, so both lean on plants that tolerate wet feet.
 
 | Feature | Approx. size | Notes | Confidence |
 | --- | --- | --- | --- |
@@ -56,9 +59,9 @@ The concept puts about 1,100 sq ft into native beds along the house and the sout
 | --- | --- | --- | --- | --- |
 | Z2 Inside corner + south of wing | \~300 sq ft bed (135 existing + \~165 new) | Part sun to sun, afternoon | Short-to-mid prairie bed, 1–3 ft: prairie dropseed, little bluestem, anise hyssop, wild bergamot, purple coneflower, rough blazing star, aromatic aster | 1 |
 | Z3 Foundation bed + stump island | \~160 sq ft (60 existing + \~100 around the T1 stump) | Sun to part sun, afternoon (T1 is gone) | Widen the bed \~8 ft west to wrap the stump in low sun natives: wild strawberry, pussytoes, nodding onion, harebell, little bluestem. Keep healthy shrubs, and swap tired ones for native shrubs such as bush honeysuckle (*Diervilla lonicera*) or New Jersey tea, with columbine at the edge | 1 |
-| Z4 South strip under T4 | \~450 sq ft bed + \~110 sq ft path | Shade to part shade | Woodland-edge planting: Pennsylvania sedge as the groundcover, wild geranium, zigzag goldenrod, big-leaved aster, wild ginger, plus 2–3 native shrubs. Keep a 3 ft mulch path along the house to the backyard fence. Remove the old hive first (see below) | 2 |
+| Z4 South strip under T4 | \~450 sq ft bed + \~110 sq ft path | Shade to part shade | Woodland-edge planting: Pennsylvania sedge as the groundcover on the drier house side (wild ginger and great blue lobelia along the wet fence edge), wild geranium, zigzag goldenrod, big-leaved aster, wild ginger, plus 2–3 native shrubs. Keep a 3 ft mulch path along the house to the backyard fence. Remove the old hive first (see below) | 2 |
 | Z1 Open front lawn | \~790 sq ft (already mostly bee lawn) | Sun to part sun | Touch up the existing bee lawn. Frost-seed white clover and self-heal into thin spots in late winter. Add early bloomers (native violets, wild strawberry, optional crocus) to cover the weeks before the clover gets going. Mow at 3–4 in., a few times a year | 1 (touch-ups, late winter 2027) |
-| Z1 South border | \~190 sq ft bed | Part sun: the neighbor's 6 ft fence shades it from the south | Prairie border along the south line, tying Z2 to the sidewalk. Leave a 2 ft access strip along the neighbor's fence. Favor part-sun species: wild bergamot, golden alexanders, zigzag goldenrod, prairie dropseed | 3 |
+| Z1 South border | \~190 sq ft bed | Part sun: the neighbor's 6 ft fence shades it from the south. Stays wet along the fence | Wet-tolerant border along the south line, tying Z2 to the sidewalk. Leave a 2 ft access strip along the neighbor's fence. Golden alexanders, blue vervain, great blue lobelia, swamp milkweed, fox sedge, with zigzag goldenrod toward the shadier east end | 3 |
 | Z5 Boulevard | \~265 sq ft | Part shade in the north half (T2), part sun to the south | Already a bee lawn. Not part of this plan: keep mowing it 2–4 times a year | — |
 
 **Why this order.** Phase 1 grows from beds that already exist, so it looks finished in its first summer. Phase 2 tackles the zone where turf grows worst (shade from T4, T5 and the fence). Phase 3 waits until you've seen how the first two phases hold up.
@@ -93,7 +96,7 @@ Add one rain barrel in Phase 1 and pipe its overflow into the corner bed, so roo
 
 - **Overflow matters more than the barrel.** An inch of rain on just 100 sq ft of roof is about 62 gallons, so one barrel fills in a single moderate storm. Plan for where the overflow goes.
 - **Location.** Put the barrel at the front downspout nearest the inside corner. The aerial shows what looks like a splash block near the wing's southwest corner (verify).
-- **Rain-garden pocket.** Run overflow at least 10 ft from the foundation into a shallow, bowl-shaped dip at the outer edge of the corner bed or the south border. Plant it with species that handle both wet and dry spells: swamp milkweed, blue vervain, great blue lobelia, fox sedge.
+- **Rain-garden pocket.** Run overflow at least 10 ft from the foundation into a shallow, bowl-shaped dip at the outer edge of the corner bed. Keep it away from the south fence line, which already stays wet. Plant it with species that handle both wet and dry spells: swamp milkweed, blue vervain, great blue lobelia, fox sedge.
 - **Use.** Ornamentals and natives only, not edibles. Keep it covered against mosquitoes (city guidance).
 - **Winter.** Drain and disconnect before the first hard freeze, and put the downspout back on its splash block.
 
@@ -105,7 +108,7 @@ The private front yard needs no permit at all, as long as the plantings are inte
 
 - Minnesota Statute 412.925 (2023) requires every city to allow a "managed natural landscape": a planned, intentional, maintained planting, which may exceed 8 in. and go to seed. An unmown lawn left to go wild does not count. ([Revisor](https://www.revisor.mn.gov/statutes/cite/412.925/pdf), [League of MN Cities](https://lmc.org/?p=32472))
 - Rochester amended its Tall Grass and Weeds ordinance (Code 8-5) in July 2024 to match. No permit is needed for natural landscapes on private property outside the boulevard. Turf grass over 12 in. still needs a permit anywhere. ([City 311 notice](https://rochestermn.qscend.com/311/knowledgebase/article/2497))
-- The state law covers cities, not homeowners associations. A Plymouth homeowner's 2025 lawsuit against her HOA put that gap on display. If the neighborhood has covenants, check them before Phase 1. ([Star Tribune](https://www.startribune.com/a-lawsuit-blooms-in-plymouth-as-homeowner-battles-hoa-over-her-naturally-planted-yard/601507454))
+- The state law covers cities, not homeowners associations. A Plymouth homeowner's 2025 lawsuit against her HOA put that gap on display. No HOA applies to this yard, so this one is moot here. ([Star Tribune](https://www.startribune.com/a-lawsuit-blooms-in-plymouth-as-homeowner-battles-hoa-over-her-naturally-planted-yard/601507454))
 - Call Gopher State One Call (811) a few days before any digging. It's free and required by state law.
 
 ## Timing plan
@@ -119,7 +122,7 @@ Five working weekends over three seasons get you there, and the first could happ
 5. **Weekend 3, June 2027: smother Z4 (if not done in fall) and the south border.** Cardboard and mulch again. Both will be ready to plant by September.
 6. **Weekend 4, early to mid Sep 2027: plant the shade bed (Z4).** \~200 plugs and 2–3 shrubs, plus the mulch path. Spot-seed any thin patches in the front lawn the same day.
 7. **Weekend 5, mid-May to early June 2028: plant the south border.** \~115 plugs, leaving the 2 ft access strip along the neighbor's fence open.
-8. **2028 onward: maintenance.** Leave stems standing over winter, since many native bees nest in them. Cut back in late spring once it's consistently warm. Weed 2–3 times a summer, and mow the bee lawn 2–4 times a year.
+8. **2028 onward: maintenance.** Leave stems standing over winter, since many native bees nest in them. Cut back in late spring once it's consistently warm. Weed by hand 2–3 times a summer, and mow the bee lawn 2–4 times a year.
 
 ## Budget
 
@@ -137,14 +140,14 @@ The base plan runs about $1,270–$1,960 over three seasons, or roughly $870–$
 - **Free materials.** Cardboard, plus city topsoil and mulch for a donation. The smother method needs \~11 cu yd of mulch across all phases, about 9–10 pickup loads spread over two years.
 - **Lawns to Legumes.** Up to $400 back on native plants and seed, if the owner applies by Nov 30 and buys after the award notice in January. A Rochester Garden Grant could add up to $1,000 more for 2027 work. Ask both programs whether they can be combined, and keep receipts separate by program. Both applications belong in the property owner's name: the Garden Grant requires the applicant to own the parcel, or to be a renter with the landlord's written consent.
 - **Plugs over potted plants.** 38-plug trays run about $2 per plant. The same species in quart or gallon pots costs 3–5× more.
-- **Seed the south border instead.** A native seed mix costs about $50 per 500 sq ft through the Olmsted SWCD sale and saves \~$200 against plugs. The tradeoff is 2–3 years to fill in and more weeding while it does.
+- **Seed the south border instead.** A native seed mix (a wet-meadow one, given the fence line) costs about $50 per 500 sq ft through the Olmsted SWCD sale and saves \~$200 against plugs. The tradeoff is 2–3 years to fill in and more weeding while it does.
 - **Divide and share.** Many prairie plants can be divided by year 3. Use those to fill gaps instead of buying more.
 
 ## Open questions and next captures
 
-The biggest unknowns are the trees, where the downspouts are, and whether an HOA applies. Answers to these will move zone boundaries more than anything else.
+The biggest unknowns are the trees, where the downspouts are, and how wet the south fence line gets. Answers to these will move zone boundaries more than anything else.
 
-- [ ] Is there an HOA or recorded covenant covering landscaping?
+- [x] Is there an HOA or recorded covenant covering landscaping? **No HOA.**
 - [ ] Trees T2–T5: confirm species (the Street View guesses are in Site baseline). For the T1 stump: what tree it was (some species sucker from the roots). T4 and T5 decide how shady Z4 really is
 - [ ] Where are the front downspouts? The front door is confirmed: just south of the garage, up a short stoop
 - [ ] Old beehive: is it a managed honey bee hive, and is there a local beekeeper who can check it?
@@ -152,9 +155,11 @@ The biggest unknowns are the trees, where the downspouts are, and whether an HOA
 - [ ] Sun check: phone photos of the front at roughly 10 am, 1 pm and 5 pm on a sunny day (in spring, once leaves are out)
 - [ ] Ground-level photos: from each front corner
 - [ ] Tape-measure: house setback from the sidewalk, bed edges
-- [ ] Drainage: any soggy spots, or places water sheets off the driveway? And is the lawn fertilized or treated with weed killer now? Both suppress clover.
+- [x] Drainage and treatments? **Good slope all around; drains well except along the south fence line. No weed killer anywhere, on principle.**
+- [ ] How wet is the south fence line: standing water after rain, or just slow to dry?
+- [ ] Is the lawn fertilized now? Fertilizer favors grass over clover
 - [ ] Look and feel: tidy and formal, or meadowy? Any must-have or banned plants (allergies, kids, dogs)?
-- [ ] Is the city mulch shredded wood or wood chips? Either works for smothering. Shredded wood is what the Garden Grant reimburses
+- [x] Is the city mulch shredded wood or wood chips? **Shredded wood:** fine for smothering, and the kind the Garden Grant reimburses
 
 ## Reference: boulevard rules (not part of this plan)
 

@@ -202,8 +202,10 @@
 
   // ---------- open questions ----------
   const answered = new Set(store.get("questions", []));
-  $("[data-questions]").innerHTML = plan.openQuestions.map(q => `
+  $("[data-questions]").innerHTML = plan.openQuestions.filter(q => !q.a).map(q => `
     <li><label><input type="checkbox" data-q="${q.id}" ${answered.has(q.id) ? "checked" : ""}><span>${q.t}</span></label></li>`).join("");
+  $("[data-answered]").innerHTML = plan.openQuestions.filter(q => q.a).map(q => `
+    <li><span class="ans-q">${q.t}</span><span class="ans-a">${q.a}</span></li>`).join("");
   $("[data-questions]").addEventListener("change", e => {
     const id = e.target.dataset.q;
     if (!id) return;
