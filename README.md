@@ -4,14 +4,14 @@ A plan for turning a typical suburban front lawn in Rochester, MN (USDA zones 4b
 
 The short version: smother turf with cardboard and free city mulch, plant native plugs densely, keep a mown edge so it looks intentional, and lean on the bee lawn that's already there.
 
-**Website: <https://jkastl.github.io/lawn-and-order/>.** It includes a to-scale site model, zone guide, bloom calendar, timeline checklist, budget calculator, the boulevard rules, and grant deadlines with countdowns. It works on phones.
+**Website: <https://jkastl.github.io/lawn-and-order/>.** It includes a to-scale site model, zone guide, bloom calendar, timeline checklist, budget calculator, the local rules, and grant deadlines with countdowns. It works on phones.
 
 ## What's here
 
 | Path | What it is |
 | --- | --- |
 | [`site/`](site/) | The website: static HTML, CSS and JS with no build step. Content lives in [`site/data/plan.json`](site/data/plan.json) and [`site/data/budget.json`](site/data/budget.json) |
-| [`docs/conversion-plan.md`](docs/conversion-plan.md) | The full written plan: zones, plant lists, boulevard rules, timing, budget, open questions, sources |
+| [`docs/conversion-plan.md`](docs/conversion-plan.md) | The full written plan: zones, plant lists, local rules, timing, budget, open questions, sources, plus boulevard rules for reference |
 | [`budget/budget.md`](budget/budget.md) | Budget summary and every line item, readable on GitHub |
 | [`budget/budget.csv`](budget/budget.csv), [`budget/assumptions.csv`](budget/assumptions.csv) | The same budget as spreadsheet-friendly CSV |
 | [`budget/build_budget.py`](budget/build_budget.py) | Regenerates the three budget files from `site/data/budget.json` |
@@ -50,4 +50,4 @@ Pushes to `main` deploy `site/` to GitHub Pages once the privacy check passes. T
 - Dimensions are scaled from an aerial photo, roughly ±2–3 ft. Tape-measure before cutting bed edges.
 - Prices and program details were checked in November 2026 and will drift. Each line carries its source.
 - Bloom times on the website are typical for southern Minnesota and shift with the weather.
-- Boulevard rules are Rochester-specific. Check your own city before planting in the right-of-way.
+- The rules summarized here are Rochester-specific. Check your own city.

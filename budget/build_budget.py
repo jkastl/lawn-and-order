@@ -107,7 +107,8 @@ def build(data: dict) -> dict[str, str]:
         lo, hi = sum(r["totalLo"] for r in req), sum(r["totalHi"] for r in req)
         olo, ohi = sum(r["totalLo"] for r in opt), sum(r["totalHi"] for r in opt)
         tot["lo"] += lo; tot["hi"] += hi; tot["olo"] += olo; tot["ohi"] += ohi
-        out.append(f"| {p['phase']}: {p['title']} | {p['timing']} | {money(lo)}–{money(hi)} | {money(olo)}–{money(ohi)} |")
+        extras = f"{money(olo)}–{money(ohi)}" if ohi else "—"
+        out.append(f"| {p['phase']}: {p['title']} | {p['timing']} | {money(lo)}–{money(hi)} | {extras} |")
     out.append(f"| **Total** |  | **{money(tot['lo'])}–{money(tot['hi'])}** | **{money(tot['olo'])}–{money(tot['ohi'])}** |")
     grants = a["grantL2L"] + a["grantGarden"]
     plugs = sum(r["qtyValue"] for r in rows if r["unit"] == "plugs" and not r["optional"])

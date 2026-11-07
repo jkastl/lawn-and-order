@@ -3,10 +3,6 @@ Prices,plugLow,"Plug price, low",1.97,$/plug,New Leaf Natives 38-plug single-spe
 Prices,plugHigh,"Plug price, high",2.75,$/plug,Estimate: smaller quantities or pricier species (e.g. a prairie phlox tray at $105 = $2.76)
 Prices,shrubLow,"Native shrub, low",25,$/each,"Estimate, unverified: 1-gal native shrub at a local nursery"
 Prices,shrubHigh,"Native shrub, high",45,$/each,"Estimate, unverified: 2–3 gal native shrub"
-Prices,seedLow,"Bee lawn seed, low",17.5,$/lb,Nokomis East 1-lb bag $17.50 (UMN mix)
-Prices,seedHigh,"Bee lawn seed, high",30,$/lb,"Mann Lake bee lawn mix, from $29.99"
-Prices,aeratorLow,"Core aerator rental, low",60,$,Typical 4-hr rental ~$60–$83
-Prices,aeratorHigh,"Core aerator rental, high",90,$,Typical full-day rental ~$90–$116
 Prices,mulchLow,"Free mulch/topsoil donation, low",0,$/cu yd,"City giveaway: free, donation requested"
 Prices,mulchHigh,"Free mulch/topsoil donation, high",10,$/cu yd,Guess at a reasonable donation; edit to taste
 Prices,barrelLow,"Rain barrel, low",70,$,County/RAM truckload sales elsewhere run ~$61–$70 (Livingston Co. MI 2026: $69.95)
@@ -15,15 +11,12 @@ Prices,diverterLow,"Diverter + overflow hose, low",20,$,"Estimate, unverified"
 Prices,diverterHigh,"Diverter + overflow hose, high",40,$,"Estimate, unverified"
 Rates,plugDensity,Plugs per sq ft (15–18 in. spacing),0.6,plugs/sq ft,15 in. grid = 0.64/sq ft; 18 in. = 0.44/sq ft
 Rates,mulchDepth,Smother mulch depth,4,in.,Over cardboard
-Rates,seedRate,Bee lawn seeding rate,5,"lb per 1,000 sq ft",UMN mix label rate; overseeding can go 2–4 lb
 Rates,replacementPct,Replacement allowance,0.1,% of plugs,Estimate for losses in year 1
 Areas,areaCorner,Phase 1: corner bed to plant (new 165 + gaps in existing),250,sq ft,Z2 + south of wing
 Areas,areaStump,Phase 1: stump island bed (Z3 widened around the T1 stump),100,sq ft,Foundation bed widened west to wrap the stump; verify stump location
 Areas,areaSmother1,Phase 1: new area to smother,265,sq ft,Z2 extension 165 + stump island 100
 Areas,areaShade,Phase 2: shade bed area for plugs (after shrubs),330,sq ft,Z4 ~450 sq ft minus ~120 sq ft under 3 shrubs
 Areas,areaSmother2,Phase 2: area to smother (Z4 + south border),640,sq ft,Z4 450 + border 190
-Areas,areaBlvdA,Boulevard bee lawn (Option A),265,sq ft,Boulevard south of the drive; the open front lawn is already mostly bee lawn
 Areas,areaBorder,Phase 3: south border bed,190,sq ft,"Z1 south border, minus a 2 ft access strip along the neighbor's fence"
-Areas,areaBlvdB,Phase 3: boulevard core (Option B),152,sq ft,~4 ft wide after 18 in. setbacks × ~38 ft
 Grants,grantL2L,Lawns to Legumes reimbursement (if awarded),400,$,"Up to $400; apply by Nov 30, 2026; set to 0 if not awarded"
 Grants,grantGarden,Rochester Garden Grant (if awarded),0,$,"Up to $1,000, 25% match, apply Oct 1–Dec 31 for 2027; enter the award here. Ask both programs whether they can stack"
