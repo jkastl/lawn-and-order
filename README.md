@@ -45,6 +45,16 @@ Visits are counted with GoatCounter (no cookies, no personal data) at <https://j
 
 Pushes to `main` deploy `site/` to GitHub Pages once the privacy check passes. To set that up, go to **Settings → Pages → Build and deployment** and set the source to **GitHub Actions**.
 
+## Versions
+
+The project uses [semantic versioning](https://semver.org/). The current version lives in [`VERSION`](VERSION), and [`CHANGELOG.md`](CHANGELOG.md) says what changed in each one. To release:
+
+1. Bump `VERSION`: major for a change in the plan's shape, minor for new features or content, patch for fixes.
+2. Add a matching `## [X.Y.Z] - date` section to the changelog.
+3. Update the version in the site footer (`site/index.html`, the `data-version` link).
+
+CI fails if those three disagree. Once the change merges to `main`, a workflow tags `vX.Y.Z` and publishes a GitHub release with the changelog notes.
+
 ## Caveats
 
 - Dimensions are scaled from an aerial photo, roughly ±2–3 ft. Tape-measure before cutting bed edges.
