@@ -26,7 +26,6 @@
   const PHASE_NAME = { 1: "Phase 1", 2: "Phase 2", 3: "Phase 3" };
 
   // ---------- overview ----------
-  $("[data-asof]").textContent = "Plan as of " + fmtDate(plan.asOf);
   $("[data-stats]").innerHTML = plan.stats.map(s => `
     <div class="stat"><div class="stat-v">${s.value}${s.unit ? ` <small>${s.unit}</small>` : ""}</div><div class="stat-l">${s.label}</div></div>`).join("");
 
